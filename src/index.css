@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans 3', 'Helvetica Neue', Helvetica, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+
+  --accent-1: #1f6feb;
+  --accent-2: #0ea5e9;
+  --accent-strong: #1158c7;
+  --accent-soft: rgba(31, 111, 235, 0.18);
+  --accent-soft-light: rgba(31, 111, 235, 0.12);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +23,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--accent-1);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--accent-strong);
 }
 
 body {
@@ -47,7 +55,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--accent-1);
 }
 button:focus,
 button:focus-visible {
@@ -60,7 +68,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: var(--accent-2);
   }
   button {
     background-color: #f9f9f9;
