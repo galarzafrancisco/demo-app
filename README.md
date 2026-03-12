@@ -25,6 +25,13 @@ Open the app at `http://localhost:5173`.
 - `npm run preview` - Preview the production build
 - `npm run lint` - Run ESLint
 
+## Deployment
+
+- `Dockerfile` builds the app and serves it from NGINX on port `8080`
+- Kubernetes manifests live in `install/manifests/`
+- GitHub Actions builds and pushes `ghcr.io/galarzafrancisco/demo-app-init`
+- On pushes to `main`, CI copies manifests into `spark-ops/k8s/demo-app-init` and opens a deployment PR
+
 ## Project Structure
 
 - `src/` - Application source code

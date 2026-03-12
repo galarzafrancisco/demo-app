@@ -1,0 +1,156 @@
+name: Build and Deploy
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+env:
+  APP_NAME: demo-app
+  IMAGE_NAME: ghcr.io/galarzafrancisco/demo-app
+
+jobs:
+  test:
+    name: Build and Lint
+    runs-on: ubuntu-24.04-arm
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Build app
+        run: npm run build
+
+  docker:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-24.04-arm
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-pr:
+    name: Copy Manifests to spark-ops
+    runs-on: ubuntu-24.04-arm
+    needs: docker
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout app repository
+        uses: actions/checkout@v4
+        with:
+          path: app
+
+      - name: Checkout spark-ops
+        uses: actions/checkout@v4
+        with:
+          repository: galarzafrancisco/spark-ops
+          token: ${{ secrets.SPARK_OPS_TOKEN }}
+          path: spark-ops
+
+      - name: Set up Kustomize
+        uses: imranismail/setup-kustomize@v2
+
+      - name: Extract image tag
+        id: image-tag
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          SHORT_SHA=$(echo "$GITHUB_SHA" | cut -c1-7)
+          echo "tag=${BRANCH_NAME}-${SHORT_SHA}" >> "$GITHUB_OUTPUT"
+          echo "sha=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Copy manifests to spark-ops
+        run: |
+          # Remove old manifests if they exist
+          rm -rf "spark-ops/k8s/demo-app"
+
+          mkdir -p "spark-ops/k8s"
+          cp -r app/install/manifests "spark-ops/k8s/demo-app"
+          cd "spark-ops/k8s/demo-app/base"
+          kustomize edit set image "${IMAGE_NAME}=${IMAGE_NAME}:${{ steps.image-tag.outputs.tag }}"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.SPARK_OPS_TOKEN }}
+          path: spark-ops
+          commit-message: |
+            deploy: update ${{ env.APP_NAME }} manifests and image to ${{ steps.image-tag.outputs.tag }}
+
+            Source: ${{ github.repository }}@${{ github.sha }}
+            Build: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          branch: deploy/${{ env.APP_NAME }}-${{ steps.image-tag.outputs.sha }}
+          delete-branch: true
+          title: Deploy ${{ env.APP_NAME }} (${{ steps.image-tag.outputs.tag }})
+          body: |
+            ## Deployment Update
+
+            **Service**: ${{ env.APP_NAME }}
+            **Image Tag**: `${{ steps.image-tag.outputs.tag }}`
+            **Source Commit**: ${{ github.sha }}
+
+            ### Changes
+            - Copied latest manifests from `install/manifests/`
+            - Updated image tag to `${{ steps.image-tag.outputs.tag }}`
+
+            ### Build Information
+            - **Build Run**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            - **Image**: `${{ env.IMAGE_NAME }}:${{ steps.image-tag.outputs.tag }}`
+          labels: |
+            automated-deployment
+            demo-app
