@@ -1,34 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <div className="container">
+      <div className="hero">
+        <div className="badge">DEMO APPLICATION</div>
+        <h1 className="title">
+          Taico Demo App
+        </h1>
+        <p className="subtitle">
+          Showcasing the power of asynchronous coding
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      <div className="features">
+        <div className="feature-card">
+          <div className="feature-icon">⚡</div>
+          <h3>Async First</h3>
+          <p>Built to demonstrate asynchronous coding patterns and real-time capabilities</p>
+        </div>
+
+        <div className="feature-card">
+          <div className="feature-icon">🚀</div>
+          <h3>Modern Stack</h3>
+          <p>Powered by React, Vite, and deployed with GitOps on Kubernetes</p>
+        </div>
+
+        <div className="feature-card">
+          <div className="feature-icon">🎯</div>
+          <h3>Production Ready</h3>
+          <p>CI/CD pipeline with automated testing and deployment workflows</p>
+        </div>
+      </div>
+    </div>
   )
 }
 
