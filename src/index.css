@@ -9,11 +9,11 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
-  --accent-1: #1f6feb;
-  --accent-2: #0ea5e9;
-  --accent-strong: #1158c7;
-  --accent-soft: rgba(31, 111, 235, 0.18);
-  --accent-soft-light: rgba(31, 111, 235, 0.12);
+  --accent-1: #d97706;
+  --accent-2: #ea580c;
+  --accent-strong: #b45309;
+  --accent-soft: rgba(217, 119, 6, 0.18);
+  --accent-soft-light: rgba(217, 119, 6, 0.12);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
