@@ -12,75 +12,91 @@ interface Instrument {
 const instruments: Instrument[] = [
   {
     id: 1,
-    name: 'Acoustic Guitar',
+    name: 'Martin D-28',
     category: 'Strings',
-    price: 499,
+    price: 3299,
     image: '🎸',
-    description: 'Classic 6-string acoustic guitar with rich, warm tones'
+    description: 'Legendary dreadnought acoustic guitar with iconic tone'
   },
   {
     id: 2,
-    name: 'Grand Piano',
+    name: 'Nord Piano 5',
     category: 'Keys',
-    price: 8999,
+    price: 4299,
     image: '🎹',
-    description: 'Professional grand piano with 88 weighted keys'
+    description: 'Premium stage piano with authentic acoustic sound'
   },
   {
     id: 3,
-    name: 'Drum Set',
+    name: 'Pearl Masters Maple',
     category: 'Percussion',
-    price: 1299,
+    price: 2899,
     image: '🥁',
-    description: 'Complete 5-piece drum set with cymbals and hardware'
+    description: 'Professional 5-piece maple shell drum set'
   },
   {
     id: 4,
-    name: 'Violin',
+    name: 'Stradivarius Copy',
     category: 'Strings',
-    price: 699,
+    price: 1499,
     image: '🎻',
-    description: 'Hand-crafted violin with bow and case included'
+    description: 'Master-crafted violin with exceptional resonance'
   },
   {
     id: 5,
-    name: 'Saxophone',
+    name: 'Selmer Paris Series III',
     category: 'Wind',
-    price: 1599,
+    price: 4999,
     image: '🎷',
-    description: 'Alto saxophone with professional-grade construction'
+    description: 'Professional alto saxophone with rich, warm sound'
   },
   {
     id: 6,
-    name: 'Trumpet',
+    name: 'Bach Stradivarius 180',
     category: 'Brass',
-    price: 899,
+    price: 2799,
     image: '🎺',
-    description: 'Bb trumpet with clear, powerful tone'
+    description: 'Professional Bb trumpet with legendary clarity'
   },
   {
     id: 7,
-    name: 'Electric Guitar',
+    name: 'Fender Telecaster',
     category: 'Strings',
-    price: 799,
+    price: 1899,
     image: '🎸',
-    description: 'Solid body electric guitar with dual pickups'
+    description: 'Classic solid body electric with signature twang'
   },
   {
     id: 8,
-    name: 'Synthesizer',
+    name: 'Prophet 5',
     category: 'Electronic',
-    price: 1299,
+    price: 3999,
     image: '🎹',
-    description: 'Modern digital synthesizer with 61 keys'
+    description: 'Legendary analog synthesizer reborn for modern players'
   },
   {
     id: 9,
-    name: 'Cello',
+    name: 'Gretsch White Falcon',
     category: 'Strings',
-    price: 1899,
-    image: '🎻',
-    description: 'Full-size cello with rich, deep resonance'
+    price: 5499,
+    image: '🎸',
+    description: 'Iconic hollow-body electric with vintage aesthetic'
+  },
+  {
+    id: 10,
+    name: 'Yamaha DX7',
+    category: 'Electronic',
+    price: 1799,
+    image: '🎹',
+    description: 'Classic FM synthesizer that defined the 80s sound'
+  },
+  {
+    id: 11,
+    name: 'Nord Electro 6',
+    category: 'Keys',
+    price: 2999,
+    image: '🎹',
+    description: 'Portable keyboard with organ, piano, and synth sounds'
   }
 ];
 
