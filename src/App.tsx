@@ -109,6 +109,8 @@ function App() {
               <span className="filter-tag">Keys</span>
               <span className="filter-tag">Wind</span>
               <span className="filter-tag">Percussion</span>
+              <span className="filter-tag">Brass</span>
+              <span className="filter-tag">Electronic</span>
             </div>
           </div>
 
