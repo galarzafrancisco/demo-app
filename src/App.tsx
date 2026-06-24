@@ -1,158 +1,165 @@
 import './App.css';
 
-interface Instrument {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  image: string;
-  description: string;
-}
+const focusAreas = [
+  'AI platforms that people can actually use',
+  'Cloud, data and Kubernetes foundations',
+  'Secure self-service without enterprise theatre',
+  'Turning messy ambiguity into a shippable path',
+];
 
-const instruments: Instrument[] = [
+const proofPoints = [
   {
-    id: 1,
-    name: 'Martin D-28',
-    category: 'Strings',
-    price: 3299,
-    image: '🎸',
-    description: 'Legendary dreadnought acoustic guitar with iconic tone'
+    label: '15+ years',
+    text: 'Building systems across banking, media, retail, telco and manufacturing.',
   },
   {
-    id: 2,
-    name: 'Nord Piano 5',
-    category: 'Keys',
-    price: 4299,
-    image: '🎹',
-    description: 'Premium stage piano with authentic acoustic sound'
+    label: '150+ datasets',
+    text: 'GitOps database change platform across BigQuery and Spanner, with governance built in.',
   },
   {
-    id: 3,
-    name: 'Pearl Masters Maple',
-    category: 'Percussion',
-    price: 2899,
-    image: '🥁',
-    description: 'Professional 5-piece maple shell drum set'
+    label: '4 weeks',
+    text: 'Designed, trained and productionised a live cricket wicket prediction model for Fox Sports.',
+  },
+];
+
+const work = [
+  {
+    title: 'Senior AI Engineer, Macquarie Bank',
+    period: '2025 - now',
+    text: 'Working on agentic AI platform strategy: MCP, internal registries, governance, access patterns, evals and developer enablement inside a regulated bank.',
   },
   {
-    id: 4,
-    name: 'Stradivarius Copy',
-    category: 'Strings',
-    price: 1499,
-    image: '🎻',
-    description: 'Master-crafted violin with exceptional resonance'
+    title: 'Senior Platform Engineer, Macquarie Bank',
+    period: '2021 - 2025',
+    text: 'Helped build the GCP data platform foundations behind AI, regulatory reporting and self-service infrastructure. Lots of GitOps, Kubernetes, BigQuery, Spanner, Argo CD and practical governance.',
   },
   {
-    id: 5,
-    name: 'Selmer Paris Series III',
-    category: 'Wind',
-    price: 4999,
-    image: '🎷',
-    description: 'Professional alto saxophone with rich, warm sound'
+    title: 'Senior Consultant, Servian',
+    period: '2017 - 2021',
+    text: 'GCP early adopter and hands-on architect/engineer across ASX, Fox Sports, Optus, Service NSW, Westfield, Cuscal and others. Sold the work, designed it, then built it.',
   },
-  {
-    id: 6,
-    name: 'Bach Stradivarius 180',
-    category: 'Brass',
-    price: 2799,
-    image: '🎺',
-    description: 'Professional Bb trumpet with legendary clarity'
-  },
-  {
-    id: 7,
-    name: 'Fender Telecaster',
-    category: 'Strings',
-    price: 1899,
-    image: '🎸',
-    description: 'Classic solid body electric with signature twang'
-  },
-  {
-    id: 8,
-    name: 'Prophet 5',
-    category: 'Electronic',
-    price: 3999,
-    image: '🎹',
-    description: 'Legendary analog synthesizer reborn for modern players'
-  },
-  {
-    id: 9,
-    name: 'Gretsch White Falcon',
-    category: 'Strings',
-    price: 5499,
-    image: '🎸',
-    description: 'Iconic hollow-body electric with vintage aesthetic'
-  },
-  {
-    id: 10,
-    name: 'Yamaha DX7',
-    category: 'Electronic',
-    price: 1799,
-    image: '🎹',
-    description: 'Classic FM synthesizer that defined the 80s sound'
-  },
-  {
-    id: 11,
-    name: 'Nord Electro 6',
-    category: 'Keys',
-    price: 2999,
-    image: '🎹',
-    description: 'Portable keyboard with organ, piano, and synth sounds'
-  }
+];
+
+const principles = [
+  'I like small teams with high trust and low ceremony.',
+  'I prefer plain English over slideware and architecture cosplay.',
+  'I care about leverage: what unlocks speed, safety or clarity for a lot of people.',
+  'I will go deep technically, but only when it helps the product or the organisation move.',
+];
+
+const tools = [
+  'AI agents',
+  'MCP',
+  'Google Cloud',
+  'Kubernetes',
+  'BigQuery',
+  'Spanner',
+  'Terraform',
+  'Argo CD',
+  'Node.js',
+  'React',
+  'Python',
+  'PyTorch',
 ];
 
 function App() {
   return (
-    <div className="app">
-      <header className="header">
-        <div className="header-content">
-          <h1 className="logo">🎵 Harmony Haven</h1>
-          <p className="tagline">Where Music Comes Alive</p>
+    <main className="page-shell">
+      <section className="hero" aria-labelledby="profile-title">
+        <nav className="top-bar" aria-label="Profile links">
+          <a href="https://github.com/galarzafrancisco">GitHub</a>
+          <a href="#experience-title">Experience</a>
+        </nav>
+
+        <div className="hero-grid">
+          <div>
+            <p className="eyebrow">Francisco Galarza - Manly, NSW</p>
+            <h1 id="profile-title">I build the boring platform bits that make ambitious teams faster.</h1>
+            <p className="intro">
+              Product-minded platform and AI engineer. I am aiming for Lead, CTO, Principal or Staff-level work where the job is to make hard technical calls, build trust, and turn vague problems into useful systems.
+            </p>
+            <p className="plain-note">
+              Not a LinkedIn thought-leader type. More of a "show me the problem, show me the constraints, let's make the thing better" type.
+            </p>
+          </div>
+
+          <aside className="profile-card" aria-label="What I am good at">
+            <p className="card-kicker">Good at</p>
+            <ul>
+              {focusAreas.map((area) => (
+                <li key={area}>{area}</li>
+              ))}
+            </ul>
+          </aside>
         </div>
-      </header>
+      </section>
 
-      <main className="main">
-        <section className="hero">
-          <h2 className="hero-title">Discover Your Sound</h2>
-          <p className="hero-subtitle">Explore our curated collection of premium instruments</p>
-        </section>
+      <section className="proof-grid" aria-label="Quick proof points">
+        {proofPoints.map((point) => (
+          <article className="proof-card" key={point.label}>
+            <strong>{point.label}</strong>
+            <p>{point.text}</p>
+          </article>
+        ))}
+      </section>
 
-        <section className="catalog">
-          <div className="catalog-header">
-            <h3>Our Instruments</h3>
-            <div className="category-filters">
-              <span className="filter-tag">All</span>
-              <span className="filter-tag">Strings</span>
-              <span className="filter-tag">Keys</span>
-              <span className="filter-tag">Wind</span>
-              <span className="filter-tag">Percussion</span>
-              <span className="filter-tag">Brass</span>
-              <span className="filter-tag">Electronic</span>
-            </div>
-          </div>
+      <section className="split-section">
+        <div>
+          <p className="section-label">What I do</p>
+          <h2>Find the leverage, then build the path.</h2>
+        </div>
+        <div className="body-copy">
+          <p>
+            I have spent years around data platforms, cloud foundations, Kubernetes, production incidents, AI/ML systems and enterprise security. The pattern is usually the same: the tech is only half the problem. The other half is helping people make decisions, remove friction, and trust the system enough to use it.
+          </p>
+          <p>
+            Recently that has meant working on agentic AI enablement in a bank: MCP strategy, internal registries, governance, auth, evaluations and developer workflows. Before that it was GCP data platform foundations, GitOps schema management, ingress modernisation and self-service infrastructure visibility.
+          </p>
+        </div>
+      </section>
 
-          <div className="instrument-grid">
-            {instruments.map((instrument) => (
-              <div key={instrument.id} className="instrument-card">
-                <div className="instrument-image">{instrument.image}</div>
-                <div className="instrument-info">
-                  <span className="category-badge">{instrument.category}</span>
-                  <h4 className="instrument-name">{instrument.name}</h4>
-                  <p className="instrument-description">{instrument.description}</p>
-                  <div className="instrument-footer">
-                    <span className="price">${instrument.price}</span>
-                    <button className="add-to-cart">Add to Cart</button>
-                  </div>
-                </div>
+      <section className="work-section" aria-labelledby="experience-title">
+        <p className="section-label">Experience</p>
+        <h2 id="experience-title">A few chapters</h2>
+        <div className="timeline">
+          {work.map((item) => (
+            <article className="timeline-item" key={item.title}>
+              <div>
+                <h3>{item.title}</h3>
+                <span>{item.period}</span>
               </div>
-            ))}
-          </div>
-        </section>
-      </main>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="principles-section">
+        <div>
+          <p className="section-label">How I work</p>
+          <h2>Direct, curious, allergic to nonsense.</h2>
+        </div>
+        <ul className="principle-list">
+          {principles.map((principle) => (
+            <li key={principle}>{principle}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="toolbox-section" aria-labelledby="toolbox-title">
+        <p className="section-label">Toolbox</p>
+        <h2 id="toolbox-title">Comfortable from strategy to shell.</h2>
+        <div className="toolbox">
+          {tools.map((tool) => (
+            <span key={tool}>{tool}</span>
+          ))}
+        </div>
+      </section>
 
       <footer className="footer">
-        <p>&copy; 2024 Harmony Haven. Crafting musical dreams since 1990.</p>
+        <p>Freediving, underwater photography, running and piano when I am not making computers less annoying.</p>
       </footer>
-    </div>
+    </main>
   );
 }
 
