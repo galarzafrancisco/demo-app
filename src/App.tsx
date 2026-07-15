@@ -1,52 +1,52 @@
 import { useState, type CSSProperties } from 'react';
 import './App.css';
 
-type StarStyle = CSSProperties & {
+type DinoStyle = CSSProperties & {
   '--x': string;
   '--y': string;
   '--delay': string;
 };
 
-const stars = [
-  { id: 1, label: 'Pop star 1', style: { '--x': '14%', '--y': '26%', '--delay': '0s' } },
-  { id: 2, label: 'Pop star 2', style: { '--x': '82%', '--y': '18%', '--delay': '0.4s' } },
-  { id: 3, label: 'Pop star 3', style: { '--x': '72%', '--y': '72%', '--delay': '0.8s' } },
-  { id: 4, label: 'Pop star 4', style: { '--x': '25%', '--y': '76%', '--delay': '1.2s' } },
-] satisfies { id: number; label: string; style: StarStyle }[];
+const dinosaurs = [
+  { id: 1, label: 'Spot the tiny triceratops', icon: '🦖', style: { '--x': '15%', '--y': '30%', '--delay': '0s' } },
+  { id: 2, label: 'Spot the bright stegosaurus', icon: '🦕', style: { '--x': '78%', '--y': '22%', '--delay': '0.4s' } },
+  { id: 3, label: 'Spot the canyon raptor', icon: '🦖', style: { '--x': '70%', '--y': '72%', '--delay': '0.8s' } },
+  { id: 4, label: 'Spot the fern brachiosaurus', icon: '🦕', style: { '--x': '27%', '--y': '76%', '--delay': '1.2s' } },
+] satisfies { id: number; label: string; icon: string; style: DinoStyle }[];
 
 function App() {
   const [score, setScore] = useState(0);
 
   return (
-    <main className="hello-page">
-      <section className="hello-card" aria-labelledby="hello-title">
-        <p className="eyebrow">tiny landing page</p>
-        <h1 id="hello-title">Hello, sunshine.</h1>
+    <main className="dino-page">
+      <section className="dino-card" aria-labelledby="dino-title">
+        <p className="eyebrow">jurassic field notes</p>
+        <h1 id="dino-title">Dinosaur day trip.</h1>
         <p className="intro">
-          Welcome to a very small, very cheerful corner of the web. There is no complicated demo here anymore, just a friendly hello and a pocket-sized star popping game.
+          Pack your fossil brush and step into a leafy prehistoric valley. Tap the dinosaurs as they stomp through the dig site and keep count of every sighting.
         </p>
 
-        <div className="game" aria-label="Click the bouncing stars game">
-          <div className="game-sky">
-            {stars.map((star) => (
+        <div className="game" aria-label="Click the wandering dinosaurs game">
+          <div className="dino-valley">
+            {dinosaurs.map((dinosaur) => (
               <button
-                className="star-button"
-                key={star.id}
+                className="dino-button"
+                key={dinosaur.id}
                 onClick={() => setScore((currentScore) => currentScore + 1)}
-                style={star.style as CSSProperties}
+                style={dinosaur.style as CSSProperties}
                 type="button"
-                aria-label={star.label}
+                aria-label={dinosaur.label}
               >
-                *
+                {dinosaur.icon}
               </button>
             ))}
           </div>
 
           <div className="score-card">
-            <span>Star pops</span>
+            <span>Dino sightings</span>
             <strong>{score}</strong>
             <button type="button" onClick={() => setScore(0)}>
-              Reset the sky
+              Reset the trail
             </button>
           </div>
         </div>
