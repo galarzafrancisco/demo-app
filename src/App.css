@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@500;700;900&display=swap');
 
 :root {
-  color: #242038;
-  background: #fff4bf;
+  color: #1f2a18;
+  background: #f5e6bf;
   font-family: 'Inter', system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,40 +19,40 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 18% 20%, #ff8fab 0 9rem, transparent 9.2rem),
-    radial-gradient(circle at 84% 16%, #75e6da 0 7rem, transparent 7.2rem),
-    radial-gradient(circle at 68% 86%, #f7d060 0 10rem, transparent 10.2rem),
-    linear-gradient(135deg, #fff9db, #ffe6ef 55%, #ddf8f4);
+    radial-gradient(circle at 18% 20%, #85b859 0 9rem, transparent 9.2rem),
+    radial-gradient(circle at 84% 16%, #f2a65a 0 7rem, transparent 7.2rem),
+    radial-gradient(circle at 68% 86%, #c9803f 0 10rem, transparent 10.2rem),
+    linear-gradient(135deg, #f7e8bf, #d8e8b2 55%, #8fbf7b);
 }
 
 button {
   font: inherit;
 }
 
-.hello-page {
+.dino-page {
   display: grid;
   min-height: 100vh;
   padding: clamp(18px, 4vw, 56px);
   place-items: center;
 }
 
-.hello-card {
+.dino-card {
   width: min(100%, 1040px);
   overflow: hidden;
-  border: 4px solid #242038;
+  border: 4px solid #1f2a18;
   border-radius: clamp(28px, 5vw, 48px);
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 16px 16px 0 #242038;
+  background: rgba(255, 250, 230, 0.88);
+  box-shadow: 16px 16px 0 #1f2a18;
   padding: clamp(24px, 6vw, 72px);
 }
 
 .eyebrow {
   width: fit-content;
   margin: 0 0 18px;
-  border: 3px solid #242038;
+  border: 3px solid #1f2a18;
   border-radius: 999px;
-  background: #75e6da;
-  box-shadow: 5px 5px 0 #242038;
+  background: #b8d66f;
+  box-shadow: 5px 5px 0 #1f2a18;
   padding: 10px 16px;
   font-family: 'Fredoka', system-ui, sans-serif;
   font-size: 0.95rem;
@@ -73,7 +73,7 @@ h1 {
 .intro {
   max-width: 720px;
   margin: 28px 0 0;
-  color: #4b4565;
+  color: #4c5a2f;
   font-size: clamp(1.1rem, 2.4vw, 1.45rem);
   font-weight: 700;
   line-height: 1.45;
@@ -86,57 +86,70 @@ h1 {
   margin-top: clamp(32px, 6vw, 64px);
 }
 
-.game-sky {
+.dino-valley {
   position: relative;
   min-height: 330px;
   overflow: hidden;
-  border: 4px solid #242038;
+  border: 4px solid #1f2a18;
   border-radius: 34px;
   background:
-    linear-gradient(90deg, rgba(36, 32, 56, 0.06) 1px, transparent 1px),
-    linear-gradient(rgba(36, 32, 56, 0.06) 1px, transparent 1px),
-    #dff9ff;
-  background-size: 34px 34px;
+    radial-gradient(circle at 14% 74%, #6f8f39 0 4rem, transparent 4.2rem),
+    radial-gradient(circle at 86% 76%, #8cae43 0 5rem, transparent 5.2rem),
+    linear-gradient(transparent 66%, #8b5e34 66% 70%, transparent 70%),
+    linear-gradient(#acd4d0, #d8e8b2 54%, #c99052 54%);
 }
 
-.game-sky::before {
+.dino-valley::before {
   position: absolute;
-  right: 7%;
-  bottom: 8%;
-  width: 170px;
-  height: 170px;
-  border: 4px solid #242038;
-  border-radius: 999px;
-  background: #f7d060;
-  box-shadow: 8px 8px 0 #242038;
+  right: 8%;
+  bottom: 14%;
+  width: 180px;
+  height: 92px;
+  border: 4px solid #1f2a18;
+  border-radius: 999px 999px 32px 32px;
+  background: #f3d08a;
+  box-shadow: 8px 8px 0 #1f2a18;
   content: '';
 }
 
-.star-button {
+.dino-valley::after {
+  position: absolute;
+  left: 9%;
+  bottom: 0;
+  width: 120px;
+  height: 210px;
+  border-radius: 80px 80px 0 0;
+  background: #557a35;
+  box-shadow: 78px 30px 0 -18px #6d9146;
+  content: '';
+}
+
+.dino-button {
   position: absolute;
   top: var(--y);
   left: var(--x);
-  width: 64px;
-  height: 64px;
-  border: 4px solid #242038;
-  border-radius: 22px;
-  background: #ff8fab;
-  box-shadow: 6px 6px 0 #242038;
-  color: #242038;
+  z-index: 1;
+  width: 76px;
+  height: 76px;
+  border: 4px solid #1f2a18;
+  border-radius: 26px;
+  background: #f2a65a;
+  box-shadow: 6px 6px 0 #1f2a18;
+  color: #1f2a18;
   cursor: pointer;
   font-family: 'Fredoka', system-ui, sans-serif;
-  font-size: 3rem;
+  font-size: 3.25rem;
   font-weight: 700;
   line-height: 1;
   transform: translate(-50%, -50%) rotate(12deg);
-  animation: bob 1.8s ease-in-out infinite;
+  animation: stomp 1.8s ease-in-out infinite;
   animation-delay: var(--delay);
   transition: transform 140ms ease, box-shadow 140ms ease;
 }
 
-.star-button:hover,
-.star-button:focus-visible {
-  box-shadow: 2px 2px 0 #242038;
+.dino-button:hover,
+.dino-button:focus-visible {
+  box-shadow: 2px 2px 0 #1f2a18;
   outline: none;
   transform: translate(-50%, -54%) rotate(-8deg) scale(1.08);
 }
@@ -145,10 +158,10 @@ h1 {
   display: grid;
   align-content: center;
   justify-items: start;
-  border: 4px solid #242038;
+  border: 4px solid #1f2a18;
   border-radius: 30px;
-  background: #fff4bf;
-  box-shadow: 9px 9px 0 #242038;
+  background: #f7e8bf;
+  box-shadow: 9px 9px 0 #1f2a18;
   padding: 24px;
 }
 
@@ -167,10 +180,10 @@ h1 {
 }
 
 .score-card button {
-  border: 3px solid #242038;
+  border: 3px solid #1f2a18;
   border-radius: 999px;
-  background: #75e6da;
-  box-shadow: 4px 4px 0 #242038;
+  background: #b8d66f;
+  box-shadow: 4px 4px 0 #1f2a18;
   cursor: pointer;
   padding: 12px 16px;
   font-weight: 900;
@@ -178,11 +191,11 @@ h1 {
 
 .score-card button:hover,
 .score-card button:focus-visible {
-  background: #ff8fab;
+  background: #f2a65a;
   outline: none;
 }
 
-@keyframes bob {
+@keyframes stomp {
   0%,
   100% {
     margin-top: 0;
@@ -194,15 +207,15 @@ h1 {
 }
 
 @media (max-width: 760px) {
-  .hello-card {
-    box-shadow: 8px 8px 0 #242038;
+  .dino-card {
+    box-shadow: 8px 8px 0 #1f2a18;
   }
 
   .game {
     grid-template-columns: 1fr;
   }
 
-  .game-sky {
+  .dino-valley {
     min-height: 300px;
   }
 
@@ -213,18 +226,18 @@ h1 {
 }
 
 @media (max-width: 460px) {
-  .hello-page {
+  .dino-page {
     padding: 12px;
   }
 
-  .hello-card {
+  .dino-card {
     border-width: 3px;
     border-radius: 26px;
   }
 
-  .star-button {
-    width: 54px;
-    height: 54px;
-    font-size: 2.45rem;
+  .dino-button {
+    width: 58px;
+    height: 58px;
+    font-size: 2.4rem;
   }
 }
